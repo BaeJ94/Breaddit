@@ -1,13 +1,23 @@
-#NewReddit {
+.App{
+
+}
+
+.NewReddit {
   color: white;
   text-align: left;
   background-color: #FF4500;
   font-weight: bold;
   width: 154px;
+  height: 21px;
   display: flex;
   justify-content: space-between;
   padding: 0 20px 0 0;
   float: left;
+}
+
+#GetNewText{
+  font-size: 13px;
+  text-align: center;
 }
 
 #planet{
@@ -23,10 +33,29 @@
 }
 
 .titleAndLogo{
-  font-weight: bold;
-  /* font-size: */
+  display: flex;
+  align-items: flex-end;
 }
 
 #turtle{
   width: 75px;
+  flex: 1;
+}
+
+#logoTitle{
+  font-size: 25px;
+  flex: 2;
+}
+
+#loginSignup{
+  font-size: 12px;
+}
+
+#search{
+  display: flex;
+  justify-content: flex-end;
+}
+
+#searchInput{
+  width: 217px;
 }
