@@ -34,12 +34,17 @@ class Home extends Component {
              <img id="turtle" src= {turtle} alt="" />
           </div>
           <div id="logoTitle">
-          breaddit
+            breaddit
           </div>
           <div id="loginSignup">
-          Want to Join? 
-          <Link to="/login">Login</Link> or
-          <Link to="/signup">Signup</Link> in seconds.
+            Want to Join?
+            {/*Used for spacing*/}
+            {" "} 
+            <Link to="/login">Login</Link>
+            {" "} 
+            or
+            {" "}
+            <Link to="/signup">Signup</Link> in seconds.
           </div>
         </div>
         <div id="search">
