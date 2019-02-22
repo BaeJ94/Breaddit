@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Route, Switch, Link} from 'react-router-dom';
+import axios from 'axios';
 import Login from './Login';
 import Signup from './Signup';
 import '../App.css'
@@ -8,6 +9,25 @@ let planet = require('../redditPlanet.png');
 let turtle = require('../turtleSnoo.jpg');
 
 class Home extends Component {
+  constructor(){
+    super();
+    this.state ={
+      users: []
+    }
+  }
+  // finish rendering dummy data on the front end
+  componentDidMount = () =>{
+    axios.get('/users')
+        .then((res) =>{
+          this.setState({
+            users: res.data.data
+          })
+        })
+        .catch(err =>{
+          console.log('Data not getting through')
+        })
+  }
+
   render() {
     return (
       <div className="App">
@@ -50,7 +70,9 @@ class Home extends Component {
         <div id="search">
           <input id="searchInput" type="text" placeholder="search"/>
         </div>
-
+        <ul>
+          {this.state.users.map(user => <li>{user}</li>)}
+        </ul>
         <Switch>
           <Route exact path='/login' component={Login}/>
           <Route exact path='/signup' component={Signup}/>
