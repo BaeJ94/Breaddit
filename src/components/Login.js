@@ -2,6 +2,28 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 class Login extends Component {
+    constructor(){
+        super();
+        this.state = {
+            email: '',
+            password: ''
+        }
+    }
+
+    handleEmail = (e) => {
+        this.setState({
+          email: e.target.value
+        })
+        console.log(this.state.email)
+    }
+
+    handlePass = (e) => {
+        this.setState({
+          password: e.target.value
+        })
+        
+    }
+
     render(){
         return(
             <div id="loginPage">
@@ -17,15 +39,14 @@ class Login extends Component {
                     email:
                 </div>
                 <div>
-                    <input type="text" placeholder="email" />
+                    <input onChange={this.handleEmail} type="text" placeholder="email" />
                 </div>
                 <div>
                     password:
                 </div>
                 <div>
-                    <input type="password" placeholder="password" />
+                    <input onChange={this.handlePass} type="password" placeholder="password" />
                 </div>
-
                 
             </div>
         )

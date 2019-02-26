@@ -17,18 +17,21 @@ class Home extends Component {
   }
   // finish rendering dummy data on the front end
   componentDidMount = () =>{
-    axios.get('/users')
+    axios.get('/users/all')
         .then((res) =>{
           this.setState({
             users: res.data.data
           })
+          console.log(this.state.users)
         })
         .catch(err =>{
           console.log('Data not getting through')
         })
   }
 
+
   render() {
+    // console.log(this.state.users.data[0].name)
     return (
       <div className="App">
         <div className="NewReddit">
@@ -71,7 +74,8 @@ class Home extends Component {
           <input id="searchInput" type="text" placeholder="search"/>
         </div>
         <ul>
-          {this.state.users.map(user => <li>{user}</li>)}
+                    {this.state.users.map( users => <li>{users.name}</li>)}
+
         </ul>
         <Switch>
           <Route exact path='/login' component={Login}/>

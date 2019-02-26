@@ -4,6 +4,6 @@ var router = express.Router();
 var db = require("../db/getUsers");
 
 /* GET users listing. */
-router.get("/users", db.getAllUsers);
+router.get("/all", db.getAllUsers);
 
 module.exports = router;
