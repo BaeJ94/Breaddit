@@ -21,6 +21,16 @@ function getAllUsers(req, res, next) {
     });
 }
 
+function signup(req,res,next){
+    //find SQL command to add to database
+    console.log(req.body)
+    const username = req.body.signup;
+
+    db.one(`INSERT INTO users (name) VALUES (${username})`)
+        res.send(username);
+}
+
 module.exports ={
-    getAllUsers
+    getAllUsers,
+    signup
 }

@@ -1,6 +1,60 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 class Signup extends Component {
+    constructor(){
+        super();
+        this.state = {
+            username: '',
+            email: '',
+            password: '',
+            verify: '',
+            succes: ''
+        }
+    }
+
+    handleUserSubmit = (e) => {
+        this.setState({
+          username: e.target.value
+        })
+        console.log(this.state.email)
+    }
+
+    handleEmailSubmit = (e) => {
+        this.setState({
+          email: e.target.value
+        })
+        
+    }
+
+    handlePassSubmit = (e) => {
+        this.setState({
+          password: e.target.value
+        })
+        console.log(this.state.email)
+    }
+
+    handleVerifySubmit = (e) => {
+        this.setState({
+          verify: e.target.value
+        })
+        
+    }
+
+    handleSubmit = () =>{
+        let sub = this.state.username;
+        axios.post('/users/signup', {signup: sub})
+            .then((res) =>{
+                this.setState({
+                    succes: 'the user ' + res.data + ' has been registered'
+                })
+            })
+            .catch(err => {
+                throw err;
+            })
+        
+    }
+
     render(){
         return(
             <div id="signupPage">
@@ -16,25 +70,33 @@ class Signup extends Component {
                     username:
                 </div>
                 <div>
-                    <input type="text" placeholder="username" />
+                    <input onChange={this.handleUserSubmit} type="text" placeholder="username" />
                 </div>
                 <div>
                     email:
                 </div>
                 <div>
-                    <input type="text" placeholder="email" />
+                    <input onChange={this.handleEmailSubmit} type="text" placeholder="email" />
                 </div>
                 <div>
                     password:
                 </div>
                 <div>
-                    <input type="password" placeholder="password" />
+                    <input onChange={this.handlePassSubmit} type="password" placeholder="password" />
                 </div>
                 <div>
                     verify:
                 </div>
                 <div>
-                    <input type="text" placeholder="verify password" />
+                    <input onChange={this.handleVerifySubmit} type="password" placeholder="verify password" />
+                </div>
+                <br></br>
+                <button onClick={this.handleSubmit} type="submit" >
+                    Submit
+                </button>
+                <br></br>
+                <div>
+                    {this.state.succes}
                 </div>
             </div>
         )

@@ -3,9 +3,8 @@ import {Route, Switch, Link} from 'react-router-dom';
 import axios from 'axios';
 import Login from './Login';
 import Signup from './Signup';
-import '../App.css'
 
-let planet = require('../redditPlanet.png');
+
 let turtle = require('../turtleSnoo.jpg');
 
 class Home extends Component {
@@ -34,23 +33,7 @@ class Home extends Component {
     // console.log(this.state.users.data[0].name)
     return (
       <div className="App">
-        <div className="NewReddit">
-          <div id="GetNewText">
-          GET NEW BREADDIT
-          </div>
-          <div>
-            <img id="planet" src={planet} alt=""/>
-          </div>
-        </div>
-        <div id="nav">
-          <select id="select">
-            <option>SubBreaddits</option>
-            <option>Announcements</option>
-            <option>Art</option>
-            <option>AskReddit</option>
-          </select>
-          Home - POPULAR - ALL - RANDOM - USERS | ASKBREADDIT - WORLDNEWS
-        </div>
+        
         <br></br>
         <div className="titleAndLogo">
           <div>
