@@ -5,7 +5,9 @@ CREATE DATABASE breaddit;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  name VARCHAR NOT NULL
+  name VARCHAR UNIQUE,
+  email VARCHAR UNIQUE,
+  password VARCHAR
 );
 
 

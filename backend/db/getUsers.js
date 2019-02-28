@@ -8,29 +8,36 @@ const db = pgp("postgres://postgres:codenode@localhost/breaddit")
 function getAllUsers(req, res, next) {
   db.any('select * from users')
     .then(function (data) {
-        console.log('hi data', data)
+      console.log('hi data', data)
       res.send({
-          status: 'success',
-          data: data,
-          message: 'Retrieved ALL users'
-        });
+        status: 'success',
+        data: data,
+        message: 'Retrieved ALL users'
+      });
     })
     .catch(function (err) {
       console.log(err)
-     // return next(err);
+      // return next(err);
     });
 }
 
-function signup(req,res,next){
-    //find SQL command to add to database
-    console.log(req.body)
-    const username = req.body.signup;
+function signup(req, res, next) {
+  console.log(req.body)
+  var username = req.body.signup.username;
+  var email = req.body.signup.email;
+  var pass = req.body.signup.password;
 
-    db.one(`INSERT INTO users (name) VALUES (${username})`)
-        res.send(username);
+  db.none('INSERT INTO users (name, email, password) VALUES (${username}, ${email}, ${pass})', {
+    username, email, pass
+  }).then(() => {
+    res.send(username);
+  })
+    .catch(err => {
+      console.log('SQL ERR', err)
+    })
 }
 
-module.exports ={
-    getAllUsers,
-    signup
+module.exports = {
+  getAllUsers,
+  signup
 }

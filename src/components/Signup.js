@@ -42,17 +42,26 @@ class Signup extends Component {
     }
 
     handleSubmit = () =>{
-        let sub = this.state.username;
-        axios.post('/users/signup', {signup: sub})
-            .then((res) =>{
-                this.setState({
-                    succes: 'the user ' + res.data + ' has been registered'
+        if(!this.state.password === this.state.verify){
+            this.setState({
+                username: '',
+                email: '',
+                password: '',
+                verify: '',
+                success: 'These passwords don\'t match. Please re-enter matching passwords.'
+            })
+        }else{
+            let sub = this.state
+            axios.post('/users/signup', {signup: sub})
+                .then((res) =>{
+                    this.setState({
+                        succes: 'the user ' + res.data + ' has been registered'
+                    })
                 })
-            })
-            .catch(err => {
-                throw err;
-            })
-        
+                .catch(err => {
+                    throw err;
+                })
+        }
     }
 
     render(){
