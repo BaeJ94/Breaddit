@@ -1,20 +1,21 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 class Login extends Component {
     constructor(){
         super();
         this.state = {
-            email: '',
+            username: '',
             password: ''
         }
     }
 
-    handleEmail = (e) => {
+    handleUsername = (e) => {
         this.setState({
-          email: e.target.value
+          username: e.target.value
         })
-        console.log(this.state.email)
+        console.log(this.state.username)
     }
 
     handlePass = (e) => {
@@ -22,6 +23,19 @@ class Login extends Component {
           password: e.target.value
         })
         
+    }
+
+    handleLogin = () =>{
+        let login = this.state
+        axios.post('/users/login', login)
+            .then((res) =>{
+                this.setState({
+                    succes: 'the user ' + res.data + ' has been registered'
+                })
+            })
+            .catch(err => {
+                throw err;
+            })
     }
 
     render(){
@@ -36,18 +50,19 @@ class Login extends Component {
                 </h1>
                 <br></br>
                 <div>
-                    email:
+                    username:
                 </div>
                 <div>
-                    <input onChange={this.handleEmail} type="text" placeholder="email" />
+                    <input onChange={this.handleUsername} type="text" placeholder="email" />
                 </div>
                 <div>
                     password:
                 </div>
                 <div>
-                    <input onChange={this.handlePass} type="password" placeholder="password" />
+                    <input onChange={this.handlePass} type="text" placeholder="password" />
                 </div>
-                
+                <br></br>
+                <button onClick={this.handleLogin} type="submit">Login</button>
             </div>
         )
     }
