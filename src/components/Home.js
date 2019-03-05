@@ -8,25 +8,7 @@ import Signup from './Signup';
 let turtle = require('../turtleSnoo.jpg');
 
 class Home extends Component {
-  constructor(){
-    super();
-    this.state ={
-      users: []
-    }
-  }
-  // finish rendering dummy data on the front end
-  componentDidMount = () =>{
-    axios.get('/users/all')
-        .then((res) =>{
-          this.setState({
-            users: res.data.data
-          })
-          console.log(this.state.users)
-        })
-        .catch(err =>{
-          console.log('Data not getting through')
-        })
-  }
+  
 
 
   render() {
@@ -56,10 +38,6 @@ class Home extends Component {
         <div id="search">
           <input id="searchInput" type="text" placeholder="search"/>
         </div>
-        <ul>
-                    {this.state.users.map( users => <li>{users.name}</li>)}
-
-        </ul>
         <Switch>
           <Route exact path='/login' component={Login}/>
           <Route exact path='/signup' component={Signup}/>

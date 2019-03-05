@@ -4,16 +4,28 @@ const authHelpers = require("../auth/helpers");
 function getAllUsers(req, res, next) {
   db.any('select * from users')
     .then(function (data) {
-      console.log('hi data', data)
       res.send({
         status: 'success',
         data: data,
-        message: 'Retrieved ALL users'
+        message: 'Retrieved All users'
       });
     })
     .catch(function (err) {
       console.log(err)
-      // return next(err);
+    });
+}
+
+function getAllSubs(req, res, next){
+  db.any('select * from subs')
+    .then(function (data){
+      res.send({
+        status: 'success',
+        data: data,
+        message: 'Retrived All subs'
+      });
+    })
+    .catch(function (err) {
+      console.log(err)
     });
 }
 
@@ -26,7 +38,8 @@ function signup(req, res, next) {
   )
     .then(() => {
       res.status(200).json({
-        message: "Registration successful."
+        message: "Registration successful for ",
+        username: req.body.username
       });
     })
     .catch(err => {
@@ -74,5 +87,6 @@ module.exports = {
   signup,
   loginUser,
   isLoggedIn,
-  logoutUser
+  logoutUser,
+  getAllSubs
 }

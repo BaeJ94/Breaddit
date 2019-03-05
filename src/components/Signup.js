@@ -45,8 +45,9 @@ class Signup extends Component {
         let sub = this.state
         axios.post('/users/signup', sub)
             .then((res) =>{
+                console.log(res);
                 this.setState({
-                    succes: 'the user ' + res.data + ' has been registered'
+                    succes: res.data.message + res.data.username + '!!!'
                 })
             })
             .catch(err => {

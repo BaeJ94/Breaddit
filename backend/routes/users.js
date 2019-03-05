@@ -12,5 +12,6 @@ router.post("/login", passport.authenticate("local", {}), db.loginUser);
 router.get("/isLoggedIn", db.isLoggedIn);
 router.post("/logout", loginRequired, db.logoutUser);
 router.post('/signup', db.signup);
+router.get('/subs', db.getAllSubs)
 
 module.exports = router;
