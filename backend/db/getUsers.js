@@ -28,6 +28,17 @@ function getAllSubs(req, res, next){
       console.log(err)
     });
 }
+function getOneSub(req, res, next) {
+  db.any(`SELECT * FROM posts where subId = ${req.body.id}`)
+    .then((data) => {
+      console.log(data)
+      res.send({
+        status: 'success',
+        data: data,
+        message: 'Retrived the posts'
+      })
+    })
+}
 
 function signup(req, res, next) {
   const hash = authHelpers.createHash(req.body.password);
@@ -88,5 +99,6 @@ module.exports = {
   loginUser,
   isLoggedIn,
   logoutUser,
-  getAllSubs
+  getAllSubs,
+  getOneSub
 }

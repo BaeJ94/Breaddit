@@ -67,3 +67,14 @@
 #signupPage{
   text-align: center;
 }
+
+.breadPics{
+  width: 100px;
+}
+
+.allSubs{
+  list-style: none;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+}

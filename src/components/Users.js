@@ -29,7 +29,7 @@ class Users extends Component{
           <div>
               <h1>All Users</h1>
               <br></br>
-              {this.state.users.map( users => <p>{users.name}</p>)}
+              {this.state.users.map( users => <h2>{users.name}</h2>)}
           </div>
       )
   }

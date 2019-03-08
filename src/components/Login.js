@@ -30,8 +30,11 @@ class Login extends Component {
         axios.post('/users/login', login)
             .then((res) =>{
                 this.setState({
-                    succes: 'the user ' + res.data + ' has been registered'
+                    succes: 'the user ' + res.data + ' has been logged in!'
                 })
+            })
+            .then(() =>{
+                this.props.history.push("/");
             })
             .catch(err => {
                 throw err;

@@ -13,5 +13,7 @@ router.get("/isLoggedIn", db.isLoggedIn);
 router.post("/logout", loginRequired, db.logoutUser);
 router.post('/signup', db.signup);
 router.get('/subs', db.getAllSubs)
+router.post('/bread', db.getOneSub)
+
 
 module.exports = router;

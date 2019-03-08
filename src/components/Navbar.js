@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import axios from 'axios';
 
 let planet = require('../redditPlanet.png');
@@ -23,6 +23,11 @@ class Navbar extends Component{
             console.log('Data not getting through')
         })
     }
+
+    reRoute = (e) =>{
+        this.props.history.push(e.target.value);
+    }
+
     render(){
         return(
             <div id="navbar">
@@ -35,19 +40,25 @@ class Navbar extends Component{
                     </div>
                 </div>
                 <div id="nav">
-                    <select id="select">
-                        <option>SubBreaddits</option>
+                    <select onChange={this.reRoute.bind(this)}id="select">
+                        <option value='/'>SubBreaddits</option>
                         {/*add link tags*/}
                         {this.state.subs.map(sub => {
-                            const url = `/${sub.id}`;
+                            const url = `/${sub.name}`;
                             // console.log('My SUBS',sub.name)
                            return  <option value={url}>{sub.name}</option>
                         })}
                     </select>
                     <Link to='/'> Home </Link>
-                     - POPULAR - ALL - RANDOM - 
-                    <Link to ='/users'> USERS </Link> | 
-                     - WORLDNEWS
+                     - POPULAR - 
+                     <Link to='/all'> ALL </Link>
+                     - <Link to='/random'> Random </Link> 
+                     - <Link to ='/users'> USERS </Link> | 
+                     - <Link to='/askBreaddit'> AskBreaddit </Link>
+                     - <Link to='/bread'> Bread </Link>
+                     - <Link to='/breaddings'> Breaddings </Link>
+                     - <Link to='/breadime'> Breadime </Link>
+                     - <Link to='/rollvsHero'> RollvsHero </Link>
                 </div>
             </div>
         )

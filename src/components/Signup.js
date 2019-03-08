@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect} from 'react-router-dom';
 import axios from 'axios';
 class Signup extends Component {
     constructor(){
@@ -38,17 +38,29 @@ class Signup extends Component {
         this.setState({
           verify: e.target.value
         })
-        
     }
+
+    // renderRedirect = () => {
+    //     setTimeout(3000);
+    //     if (this.state.redirect) {
+    //     return <Redirect to='/' />
+    //     }
+    // }
 
     handleSubmit = () =>{
         let sub = this.state
+        var that = this;
         axios.post('/users/signup', sub)
             .then((res) =>{
                 console.log(res);
                 this.setState({
                     succes: res.data.message + res.data.username + '!!!'
                 })
+            })
+            .then(() =>{
+                setTimeout(() => {
+                    this.props.history.push("/");
+                }, 3000)
             })
             .catch(err => {
                 throw err;
