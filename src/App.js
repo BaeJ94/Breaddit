@@ -12,6 +12,7 @@ import RollvsHero from './subreddits/RollvsHero';
 import Users from './components/Users';
 import All from './subreddits/All';
 import Random from './subreddits/Random';
+import NewPost from './components/newPost';
 import './App.css'
 
 
@@ -33,6 +34,7 @@ class App extends Component {
           <Route exact path='/users' component={Users}/>
           <Route exact path='/all' component={All}/>
           <Route exact path='/random' component={Random}/>
+          <Route exact path='/newPost' component={NewPost}/>
         </Switch>
       </div>
     );

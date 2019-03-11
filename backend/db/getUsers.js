@@ -40,6 +40,18 @@ function getOneSub(req, res, next) {
     })
 }
 
+function getAllPosts (req, res, next) {
+  db.any('SELECT * FROM posts')
+    .then((data) => {
+      console.log(data)
+      res.send({
+        status: 'success',
+        data: data,
+        message: 'Retrived All Posts'
+      })
+    })
+}
+
 function signup(req, res, next) {
   const hash = authHelpers.createHash(req.body.password);
 
@@ -100,5 +112,6 @@ module.exports = {
   isLoggedIn,
   logoutUser,
   getAllSubs,
-  getOneSub
+  getOneSub,
+  getAllPosts
 }

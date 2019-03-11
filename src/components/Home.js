@@ -3,12 +3,30 @@ import {Route, Switch, Link} from 'react-router-dom';
 import axios from 'axios';
 import Login from './Login';
 import Signup from './Signup';
-
+import NewPostButton from './newPostButton';
 
 let turtle = require('../turtleSnoo.jpg');
 
 class Home extends Component {
-  
+  constructor(){
+    super();
+    this.state ={
+      thing: []
+    }
+  }
+ 
+  componentDidMount = () => {
+
+    axios.get('/users/getAll')
+      .then((res) =>{
+        this.setState({
+          thing: res.data.data
+        })
+      })
+      .catch(err => {
+        throw err;
+      })
+  }
 
 
   render() {
@@ -37,7 +55,12 @@ class Home extends Component {
         </div>
         <div id="search">
           <input id="searchInput" type="text" placeholder="search"/>
+          <div>
+            <NewPostButton/>
+          </div>
         </div>
+        
+        {this.state.thing.map(blah =>{return <div>{blah.score}<img className='breadPics' src={blah.pic} alt=''/> {blah.title} <div className='text'>{blah.text}</div><hr></hr></div> })}
         <Switch>
           <Route exact path='/login' component={Login}/>
           <Route exact path='/signup' component={Signup}/>

@@ -31,8 +31,8 @@ class Bread extends Component {
     
     return (
       <div>
-        <h1>Bread Page</h1>
-        {this.state.thing.map(blah =>{return <div><button>up</button>{blah.score}<img className='breadPics' src={blah.pic} alt=''/> {blah.title}</div> })}
+        <h1>br/Bread</h1>
+        {this.state.thing.map(blah =>{return <div>{blah.score}<img className='breadPics' src={blah.pic} alt=''/> {blah.title}<div className='text'>{blah.text}</div><hr></hr></div> })}
       </div>
     );
   }

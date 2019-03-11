@@ -14,6 +14,7 @@ router.post("/logout", loginRequired, db.logoutUser);
 router.post('/signup', db.signup);
 router.get('/subs', db.getAllSubs)
 router.post('/bread', db.getOneSub)
+router.get('/getAll', db.getAllPosts)
 
 
 module.exports = router;

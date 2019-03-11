@@ -74,7 +74,14 @@
 
 .allSubs{
   list-style: none;
-  text-decoration: none;
   font-weight: bold;
   font-size: 20px;
+}
+
+.text{
+  font-size: 11px;
+}
+
+#newPost{
+  text-align: center;
 }

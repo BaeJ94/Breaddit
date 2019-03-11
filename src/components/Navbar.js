@@ -52,13 +52,13 @@ class Navbar extends Component{
                     <Link to='/'> Home </Link>
                      - POPULAR - 
                      <Link to='/all'> ALL </Link>
-                     - <Link to='/random'> Random </Link> 
+                     - <Link to='/random'> RANDOM </Link> 
                      - <Link to ='/users'> USERS </Link> | 
-                     - <Link to='/askBreaddit'> AskBreaddit </Link>
-                     - <Link to='/bread'> Bread </Link>
-                     - <Link to='/breaddings'> Breaddings </Link>
-                     - <Link to='/breadime'> Breadime </Link>
-                     - <Link to='/rollvsHero'> RollvsHero </Link>
+                     - <Link to='/askBreaddit'> ASKBREADDIT </Link>
+                     - <Link to='/bread'> BREAD </Link>
+                     - <Link to='/breaddings'> BREADDINGS </Link>
+                     - <Link to='/breadime'> BREADIME </Link>
+                     - <Link to='/rollvsHero'> ROLLVSHERO </Link>
                 </div>
             </div>
         )
